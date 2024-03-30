@@ -1,0 +1,15 @@
+# Exclude virtual environment
+venv/
+
+# Exclude cached files
+__pycache__/
+*.pyc
+*.pyo
+
+# Exclude logs and output
+*.log
+*.json
+
+# Exclude sensitive information
+config.ini
+secrets.json
