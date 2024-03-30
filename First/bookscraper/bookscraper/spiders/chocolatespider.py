@@ -1,30 +1,26 @@
 import scrapy
-import re
+ 
+class ChocolateSpider(scrapy.Spider):
 
-class ChocolatespiderSpider(scrapy.Spider):
-    name = "chocolatespider"
-    allowed_domains = ["chocolate.co.uk"]
-    start_urls = ["https://www.chocolate.co.uk/collections/all"]
+   #the name of the spider
+   name = 'chocolatespider'
 
-    def parse(self, response):
-        products = response.css('product-item')
-        for currProduct in products:
-            # Extracting the raw price string
-            raw_price_str = currProduct.css('span.price::text').getall()
-            # Joining list elements into a single string and using regex to find price patterns
-            price_str = ''.join(raw_price_str)
-            price_match = re.search(r'£\d+\.?\d*', price_str)
-            price = price_match.group(0) if price_match else 'Price Not Found'
-            yield{
-                'name': currProduct.css('a.product-item-meta__title::text').get(),
-                'real_price': price,
-                'price': price,
-                'url': currProduct.css('div.product-item-meta a').attrib['href'],
-        }
+   #these are the urls that we will start scraping
+   start_urls = ['https://www.chocolate.co.uk/collections/all']
 
-            next_page = response.css('[rel="next"] ::attr(href)').get()
-            
-            if next_page is not None:
-                next_page_url = 'https://www.chocolate.co.uk' + next_page
-                yield response.follow(next_page_url, callback=self.parse)
-                
+   def parse(self, response):
+
+       products = response.css('product-item')
+       for product in products:
+           #here we put the data returned into the format we want to output for our csv or json file
+           yield{
+               'name' : product.css('a.product-item-meta__title::text').get(),
+               'price' : product.css('span.price').get().replace('<span class="price">\n              <span class="visually-hidden">Sale price</span>','').replace('</span>',''),
+               'url' : product.css('div.product-item-meta a').attrib['href'],
+           }
+
+       next_page = response.css('[rel="next"] ::attr(href)').get()
+
+       if next_page is not None:
+           next_page_url = 'https://www.chocolate.co.uk' + next_page
+           yield response.follow(next_page_url, callback=self.parse)
