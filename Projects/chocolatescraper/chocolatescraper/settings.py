@@ -1,4 +1,4 @@
-# Scrapy settings for bookscraper project
+# Scrapy settings for chocolatescraper project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -7,14 +7,14 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = "bookscraper"
+BOT_NAME = "chocolatescraper"
 
-SPIDER_MODULES = ["bookscraper.spiders"]
-NEWSPIDER_MODULE = "bookscraper.spiders"
+SPIDER_MODULES = ["chocolatescraper.spiders"]
+NEWSPIDER_MODULE = "chocolatescraper.spiders"
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = "bookscraper (+http://www.yourdomain.com)"
+#USER_AGENT = "chocolatescraper (+http://www.yourdomain.com)"
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
@@ -45,13 +45,13 @@ ROBOTSTXT_OBEY = True
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    "bookscraper.middlewares.BookscraperSpiderMiddleware": 543,
+#    "chocolatescraper.middlewares.ChocolatescraperSpiderMiddleware": 543,
 #}
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    "bookscraper.middlewares.BookscraperDownloaderMiddleware": 543,
+#    "chocolatescraper.middlewares.ChocolatescraperDownloaderMiddleware": 543,
 #}
 
 # Enable or disable extensions

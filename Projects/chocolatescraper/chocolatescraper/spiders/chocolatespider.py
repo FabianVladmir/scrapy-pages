@@ -1,6 +1,6 @@
 
 import scrapy
-from chocolatescraper.itemloaders import ChocolateProductLoader
+from chocolatescraper.itemsloaders import ChocolateProductLoader
 from chocolatescraper.items import ChocolateProduct  
 
  
